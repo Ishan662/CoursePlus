@@ -1,0 +1,6 @@
+@CoursePlus_HostAddress = http://localhost:5262
+
+GET {{CoursePlus_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
