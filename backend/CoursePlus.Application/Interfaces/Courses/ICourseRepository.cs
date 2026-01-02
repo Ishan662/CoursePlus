@@ -11,5 +11,17 @@ namespace CoursePlus.Application.Interfaces.Courses
 
         Task<IEnumerable<Course>> GetAllCoursesAsync();
 
+        Task<Course?> GetCourseByIdAsync(int CourseId);
+
+        Task<bool> IsTitleDuplicateAsync(string Title);
+
+        Task AddCourseAsync(Course course);
+
+        Task UpdateCourseAsync(Course course);
+
+        Task DeleteCourseAsync(Course course);
+
+        Task UpdateDescriptionAsync(int CourseId, string Description);
+
     }
 }
