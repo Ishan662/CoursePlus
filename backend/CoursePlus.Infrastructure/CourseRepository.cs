@@ -16,9 +16,10 @@ namespace CoursePlus.Infrastructure
             this._dbContext = dbContext;
         }
 
-        public Task AddCourseAsync(Course course)
+        public async Task AddCourseAsync(Course course)
         {
-            throw new NotImplementedException();
+            _dbContext.Courses.Add(course);
+            await _dbContext.SaveChangesAsync();
         }
 
         public Task DeleteCourseAsync(Course course)
@@ -36,24 +37,29 @@ namespace CoursePlus.Infrastructure
             return _dbContext.Courses.ToListAsync();
         }
 
-        public Task<Course?> GetCourseByIdAsync(int CourseId)
+        public async Task<Course?> GetCourseByIdAsync(int CourseId)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Courses.FindAsync(CourseId);
         }
 
-        public Task<bool> IsTitleDuplicateAsync(string Title)
+        public async Task<bool> IsTitleDuplicateAsync(string Title)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Courses.AnyAsync(c => c.Title == Title);
         }
 
-        public Task UpdateCourseAsync(Course course)
+        public async Task UpdateCourseAsync(Course course)
         {
-            throw new NotImplementedException();
+            _dbContext.Courses.Update(course);
+            await _dbContext.SaveChangesAsync();
         }
 
-        public Task UpdateDescriptionAsync(int CourseId, string Description)
+        public async Task UpdateDescriptionAsync(int CourseId, string Description)
         {
-            throw new NotImplementedException();
+            var course = await _dbContext.Courses.FindAsync(CourseId);
+            if (course == null) throw new KeyNotFoundException("Course Not Found");
+
+            course.Description = Description;
+            await _dbContext.SaveChangesAsync();
         }
 
         Task<IEnumerable<Course>> ICourseRepository.GetAllCoursesAsync()

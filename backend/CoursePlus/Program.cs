@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using CoursePlus.Infrastructure;
 using Scalar.AspNetCore;
+using CoursePlus.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,7 @@ builder.Services.AddDbContext<CoursePlusContext>(options =>
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 var app = builder.Build();
 

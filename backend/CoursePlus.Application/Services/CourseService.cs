@@ -2,9 +2,6 @@
 using CoursePlus.Application.DTOs;
 using CoursePlus.Application.Interfaces.Courses;
 using CoursePlus.Domain.EntitiesNew;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CoursePlus.Application.Services
 {
