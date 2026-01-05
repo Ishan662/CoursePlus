@@ -14,6 +14,10 @@ namespace CoursePlus.API.Controllers
             this._service = Service;
         }
 
-        public ICourseService Service { get; }
+        public async Task<IActionResult> GetAllCoursesAsync()
+        {
+            var courses = await _service.GetAllCoursesAsync();
+            return Ok(courses);
+        }
     }
 }
