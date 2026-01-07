@@ -26,6 +26,16 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddScoped<ICourseRepository, CourseRepository>();
 builder.Services.AddScoped<ICourseService, CourseService>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("default", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 
 var app = builder.Build();
 
