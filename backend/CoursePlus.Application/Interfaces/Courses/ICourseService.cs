@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CoursePlus.Application.Interfaces.Courses
 {
-    internal interface ICourseService
+    public interface ICourseService
     {
         Task<IEnumerable<CourseDTO>> GetAllCoursesAsync();
         Task<CourseDTO?> GetCourseByIdAsync(int courseId);

@@ -14,6 +14,7 @@ namespace CoursePlus.API.Controllers
             this._service = Service;
         }
 
+        [HttpGet]
         public async Task<IActionResult> GetAllCoursesAsync()
         {
             var courses = await _service.GetAllCoursesAsync();

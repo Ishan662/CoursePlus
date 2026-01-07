@@ -267,3 +267,5 @@ D:\.NET_Prac\CoursePlus\backend\CoursePlus\obj\Debug\net10.0\refint\CoursePlus.A
 D:\.NET_Prac\CoursePlus\backend\CoursePlus\obj\Debug\net10.0\CoursePlus.API.pdb
 D:\.NET_Prac\CoursePlus\backend\CoursePlus\obj\Debug\net10.0\CoursePlus.API.genruntimeconfig.cache
 D:\.NET_Prac\CoursePlus\backend\CoursePlus\obj\Debug\net10.0\ref\CoursePlus.API.dll
+D:\.NET_Prac\CoursePlus\backend\CoursePlus\bin\Debug\net10.0\AutoMapper.dll
+D:\.NET_Prac\CoursePlus\backend\CoursePlus\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

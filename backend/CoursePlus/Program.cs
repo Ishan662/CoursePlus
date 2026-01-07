@@ -1,24 +1,35 @@
-using Microsoft.EntityFrameworkCore;
-using CoursePlus.Infrastructure;
-using Scalar.AspNetCore;
+using AutoMapper;
 using CoursePlus.Application;
+using CoursePlus.Application.Interfaces.Courses;
+using CoursePlus.Application.Services;
+using CoursePlus.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<CoursePlusContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DbContext"),
-        providerOptions => providerOptions.EnableRetryOnFailure());
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DbContext"),
+        providerOptions => providerOptions.EnableRetryOnFailure()
+    );
 });
 
+
+
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
-builder.Services.AddAutoMapper(typeof(MappingProfile));
+builder.Services.AddEndpointsApiExplorer();
+
+
+builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+builder.Services.AddScoped<ICourseService, CourseService>();
+
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
@@ -26,7 +37,6 @@ if (app.Environment.IsDevelopment())
     {
         options.WithTitle("My API");
         options.WithTheme(ScalarTheme.BluePlanet);
-        options.WithSidebar(false);
     });
     app.UseSwaggerUi(options =>
     {
@@ -35,9 +45,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();
