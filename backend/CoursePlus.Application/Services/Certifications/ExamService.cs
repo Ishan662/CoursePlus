@@ -6,5 +6,6 @@ namespace CoursePlus.Application.Services.Certifications
 {
     public class ExamService
     {
+        //fdf
     }
 }
